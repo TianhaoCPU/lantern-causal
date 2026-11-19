@@ -24,3 +24,5 @@ jobs:
       - run: lantern demo --config configs/experiments/bridge.json --output outputs/bridge.json
       - run: lantern demo --config configs/experiments/bridge_unchanged.json --output outputs/bridge_unchanged.json
       - run: lantern pilot --config configs/experiments/missingness_pilot.json --output outputs/missingness_pilot.json > /dev/null
+      - run: lantern blind-tasks --output outputs/blind_tasks.json --response-template outputs/blind_responses.json > /dev/null
+      - run: lantern blind-eval --config configs/experiments/missingness_pilot.json --output outputs/blind_eval.json > /dev/null

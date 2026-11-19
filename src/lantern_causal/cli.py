@@ -21,6 +21,13 @@ def main() -> None:
     pilot = commands.add_parser("pilot", help="Run the synthetic A/B/C missingness pilot.")
     pilot.add_argument("--config", type=Path, required=True)
     pilot.add_argument("--output", type=Path)
+    tasks = commands.add_parser("blind-tasks", help="Export answer-separated synthetic process tasks.")
+    tasks.add_argument("--output", type=Path)
+    tasks.add_argument("--response-template", type=Path)
+    evaluate = commands.add_parser("blind-eval", help="Score rules and optional external JSON responses offline.")
+    evaluate.add_argument("--config", type=Path, required=True)
+    evaluate.add_argument("--responses", type=Path)
+    evaluate.add_argument("--output", type=Path)
     corpus = commands.add_parser("corpus", help="Summarize the local reference corpus.")
     corpus.add_argument("--dataset", type=Path, required=True)
     validate = commands.add_parser("validate-corpus", help="Validate a local corpus.")
@@ -34,6 +41,21 @@ def main() -> None:
         elif args.command == "pilot":
             from .pilot import run_pilot
             result = run_pilot(json.loads(args.config.read_text(encoding="utf-8")))
+        elif args.command == "blind-tasks":
+            from .blind import export_tasks, response_template
+            if args.output and args.response_template and args.output.resolve() == args.response_template.resolve():
+                raise ValueError("Task output and response template must use different files.")
+            result = export_tasks()
+            if args.response_template:
+                args.response_template.parent.mkdir(parents=True, exist_ok=True)
+                args.response_template.write_text(
+                    json.dumps(response_template(), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        elif args.command == "blind-eval":
+            from .blind import run_blind_evaluation
+            submission = json.loads(args.responses.read_text(encoding="utf-8")) if args.responses else None
+            if args.responses and not isinstance(submission, dict):
+                raise ValueError("The response file must contain a JSON response envelope object.")
+            result = run_blind_evaluation(json.loads(args.config.read_text(encoding="utf-8")), submission)
         elif args.command == "corpus":
             records = list(iter_papers(args.dataset))
             result = {
@@ -50,7 +72,7 @@ def main() -> None:
                 args.report.parent.mkdir(parents=True, exist_ok=True)
                 args.report.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         serialized = json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False)
-        if args.command in ("demo", "pilot") and args.output:
+        if args.command in ("demo", "pilot", "blind-tasks", "blind-eval") and args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(serialized + "\n", encoding="utf-8")
         print(serialized)

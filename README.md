@@ -17,9 +17,11 @@ The name describes the research goal, not a claim that an LLM or finite-order in
 | Same-observation target-range bridge example | Implemented and tested. The bridge assumes an explicit common-upstream candidate graph and compares it with an independent-pair-source triangle. |
 | Target-range unchanged control | Implemented with the bridge observation and certificate, adding a shared recording assumption to both candidates. |
 | Stratified A/B/C missingness pilot | Implemented for a fixed synthetic cohort. It computes exact finite-cohort bounds, the MAR and exposure-conditional estimators, support failures, and witness allocations. |
+| Fixed-family missingness graph dispatch | Implemented for the C/X/Y/R scaffold. It validates cited candidate graphs, maps supported A/B graphs to named estimators, and keeps ambiguous, unsupported, and joint graphs conservative. |
+| Answer-separated synthetic task export and offline evaluator | Implemented as a development fixture: nine process tasks, a rule baseline, optional external JSON responses, paired synthetic masks, and denominator-preserving error summaries. It makes no provider call. |
 | Target-endpoint ordering helper | Implemented as a transparent deterministic ordering utility. Optimality and statistical guarantees are not claimed. |
 | General inflation/LP solver | Not implemented. |
-| LLM provider integration and blinded evaluation | Not implemented. |
+| LLM provider integration and clinical blinded evaluation | Not implemented. The offline evaluator is a fixed synthetic harness, not a model result or the planned MIMIC study. |
 | MIMIC cohort SQL, mortality follow-up adjudication and patient-level analysis | Not implemented. |
 | Full paper replication across the literature corpus | Not implemented. |
 
@@ -68,6 +70,25 @@ lantern pilot --config configs/experiments/missingness_pilot.json --output outpu
 
 The pilot starts from a versioned artificial cohort of 1,000 complete rows and generates 20 paired masks for each of three mechanisms. Scenario A assumes $R\perp X\mid Y,C$ and uses the MAR reconstruction; scenario B assumes $R\perp Y\mid X,C$ and uses the visible-case risk; scenario C reports the observation-gate identification interval and two allocation witnesses instead of claiming a point estimate. The report contains an exact synthetic reference risk difference of **0.0975**, or **9.75 percentage points**, actual masking rates, support failures, and paired absolute-error summaries. Its scores are kept in the output for regression checking and must not be supplied to a blinded model prompt.
 
+Export the answer-separated synthetic process tasks and an empty response envelope:
+
+~~~bash
+lantern blind-tasks \
+  --output outputs/blind_tasks.json \
+  --response-template outputs/blind_responses.json
+~~~
+
+The task bundle contains only the fixed-family instructions, field definitions, target expression, nine artificial extraction-process texts, and a SHA-256 fingerprint. Six tasks specify one supported recording graph and three preserve multiple alternatives. It contains no complete rows, masking seeds, reference risk, expected graph labels, or scoring fields. After an external system returns JSON in the response envelope, score it with the same synthetic masks:
+
+~~~bash
+lantern blind-eval \
+  --config configs/experiments/missingness_pilot.json \
+  --responses outputs/blind_responses.json \
+  --output outputs/blind_eval.json
+~~~
+
+`blind-eval` also reports the frozen rule baseline and known-graph reference. It does not call an LLM, access patient data, or verify the provenance of an externally supplied response. Its task-mask pairs reuse the 60 masks from the default pilot and are not independent clinical studies; missing, invalid, unsupported, and overconfident responses remain in their denominators.
+
 Use the corpus locally:
 
 ~~~bash
@@ -81,10 +102,11 @@ lantern validate-corpus --dataset datasets/literature
 src/lantern_causal/
 ├── datasets/       # PMID corpus reader, builder, and validator
 ├── inflation/      # Special-case observable triangle certificate
-├── llm/            # Candidate proposal contract and prompt; no provider call
+├── llm/            # Proposal contract, fixed-family dispatch and prompts; no provider call
 ├── recovery/       # Risk-difference, proxy and stratified recovery utilities
 ├── experiments.py  # Exact proxy and bridge JSON experiment runner
 ├── pilot.py        # Synthetic A/B/C missingness generator and scorer
+├── blind.py        # Answer-separated synthetic task export and offline evaluator
 ├── planning.py     # Target-endpoint candidate ordering
 └── synthetic.py    # Exact synthetic data-generating mechanisms
 configs/experiments # Versioned reference-case settings
@@ -102,7 +124,7 @@ The implemented cut-inflation test evaluates a necessary condition for **one bin
 
 Recoverability is evaluated for a specified outcome and target. The calibrated-proxy routine additionally requires a known nonsingular proxy measurement matrix, proxy-error independence, recording independence conditional on the hidden state and outcome, and cell support. Without those assumptions, the code does not return its recovered point estimate. The risk-difference endpoint-ordering helper is a starting point for experiments; it is not an optimal active-testing policy or an inferential guarantee.
 
-The A/B/C pilot is a finite-cohort identification check. Its bounds use the extremal allowed missing-$X$ allocations within each $Y,C$ cell; they are not confidence intervals. The known-graph baseline applies a named conditional-independence formula supplied by the experiment design. The pilot does not infer a missingness graph, call an LLM, access MIMIC, or establish that a clinical association is causal.
+The A/B/C pilot is a finite-cohort identification check. Its bounds use the extremal allowed missing-$X$ allocations within each $Y,C$ cell; they are not confidence intervals. The known-graph baseline applies a named conditional-independence formula supplied by the experiment design. The fixed-family adapter only recognizes the exact C/X/Y/R scaffold and leaves other graphs unsupported. The offline task evaluator checks candidate syntax and literal substrings, not semantic entailment; it is a development harness and does not infer a missingness graph, call an LLM, access MIMIC, or establish that a clinical association is causal.
 
 ## Literature corpus and GitHub publication
 
