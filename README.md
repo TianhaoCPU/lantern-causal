@@ -19,9 +19,10 @@ The name describes the research goal, not a claim that an LLM or finite-order in
 | Stratified A/B/C missingness pilot | Implemented for a fixed synthetic cohort. It computes exact finite-cohort bounds, the MAR and exposure-conditional estimators, support failures, and witness allocations. |
 | Fixed-family missingness graph dispatch | Implemented for the C/X/Y/R scaffold. It validates cited candidate graphs, maps supported A/B graphs to named estimators, and keeps ambiguous, unsupported, and joint graphs conservative. |
 | Answer-separated synthetic task export and offline evaluator | Implemented as a development fixture: nine process tasks, a rule baseline, optional external JSON responses, paired synthetic masks, and denominator-preserving error summaries. It makes no provider call. |
+| Synthetic-task provider adapter | Implemented for explicit OpenAI-compatible Chat Completions calls, with request preview, per-task checkpoints and offline-scoring export. Verified with a local mock service; no live model result is reported. |
 | Target-endpoint ordering helper | Implemented as a transparent deterministic ordering utility. Optimality and statistical guarantees are not claimed. |
 | General inflation/LP solver | Not implemented. |
-| LLM provider integration and clinical blinded evaluation | Not implemented. The offline evaluator is a fixed synthetic harness, not a model result or the planned MIMIC study. |
+| Held-out LLM evaluation and clinical blinded evaluation | Not run. The synthetic tasks and mock service are development fixtures, not model results or the planned MIMIC study. |
 | MIMIC cohort SQL, mortality follow-up adjudication and patient-level analysis | Not implemented. |
 | Full paper replication across the literature corpus | Not implemented. |
 
@@ -89,6 +90,27 @@ lantern blind-eval \
 
 `blind-eval` also reports the frozen rule baseline and known-graph reference. It does not call an LLM, access patient data, or verify the provenance of an externally supplied response. Its task-mask pairs reuse the 60 masks from the default pilot and are not independent clinical studies; missing, invalid, unsupported, and overconfident responses remain in their denominators.
 
+Preview the exact model requests without credentials or network access:
+
+~~~bash
+lantern blind-infer \
+  --provider-config configs/providers/openai_compatible.example.json \
+  --dry-run --output outputs/llm_preview.json
+~~~
+
+For provider calls, copy the config to `configs/providers/experiment.local.json`, set your model ID and API prefix, and set the token in the environment variable named by `api_key_env`. Then run:
+
+~~~bash
+lantern blind-infer \
+  --provider-config configs/providers/experiment.local.json \
+  --output outputs/llm_run.json --responses outputs/llm_responses.json
+lantern blind-eval \
+  --config configs/experiments/missingness_pilot.json \
+  --responses outputs/llm_responses.json --output outputs/llm_evaluation.json
+~~~
+
+The live command can make up to nine billable requests, one per frozen synthetic text. It saves failures and incomplete responses, makes no automatic retries, and supports `--resume` for tasks not yet started. See [configuration, checkpoints and error accounting](docs/protocols/synthetic_llm_inference.md). This adapter has been exercised with mock responses; live provider and held-out model evaluation results remain unreported.
+
 Use the corpus locally:
 
 ~~~bash
@@ -102,14 +124,16 @@ lantern validate-corpus --dataset datasets/literature
 src/lantern_causal/
 ├── datasets/       # PMID corpus reader, builder, and validator
 ├── inflation/      # Special-case observable triangle certificate
-├── llm/            # Proposal contract, fixed-family dispatch and prompts; no provider call
+├── llm/            # Proposal contracts, graph dispatch, prompts and explicit provider transport
 ├── recovery/       # Risk-difference, proxy and stratified recovery utilities
 ├── experiments.py  # Exact proxy and bridge JSON experiment runner
 ├── pilot.py        # Synthetic A/B/C missingness generator and scorer
 ├── blind.py        # Answer-separated synthetic task export and offline evaluator
+├── inference.py    # Synthetic-only provider requests, checkpoints and response export
 ├── planning.py     # Target-endpoint candidate ordering
 └── synthetic.py    # Exact synthetic data-generating mechanisms
 configs/experiments # Versioned reference-case settings
+configs/providers   # Provider config example; credentials come from the environment
 datasets/literature # Local corpus; article text and abstracts ignored by Git
 docs/                # Paper framework, protocols, decisions and asset inventory
 tools/               # Corpus rebuild, PubMed search and optional OCR utilities

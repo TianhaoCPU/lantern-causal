@@ -26,3 +26,4 @@ jobs:
       - run: lantern pilot --config configs/experiments/missingness_pilot.json --output outputs/missingness_pilot.json > /dev/null
       - run: lantern blind-tasks --output outputs/blind_tasks.json --response-template outputs/blind_responses.json > /dev/null
       - run: lantern blind-eval --config configs/experiments/missingness_pilot.json --output outputs/blind_eval.json > /dev/null
+      - run: lantern blind-infer --provider-config configs/providers/openai_compatible.example.json --dry-run --output outputs/llm_preview.json > /dev/null

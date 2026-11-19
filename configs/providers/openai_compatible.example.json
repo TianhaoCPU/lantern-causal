@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "base_url": "https://api.openai.com/v1",
+  "model": "replace-with-a-pinned-model-id",
+  "api_key_env": "OPENAI_API_KEY",
+  "timeout_seconds": 60,
+  "max_completion_tokens": 2048,
+  "json_mode": true,
+  "temperature": null
+}

@@ -1,4 +1,4 @@
-"""Offline entry points for reference experiments, corpus loading and validation."""
+"""Local experiments, corpus utilities and explicit synthetic-task inference."""
 
 import argparse
 import json
@@ -11,7 +11,7 @@ from .experiments import run_example
 
 
 def main() -> None:
-    """Dispatch explicit local actions without API calls or implicit data downloads."""
+    """Keep network inference confined to the explicit blind-infer command."""
     parser = argparse.ArgumentParser(prog="lantern")
     parser.add_argument("--version", action="version", version=__version__)
     commands = parser.add_subparsers(dest="command", required=True)
@@ -28,6 +28,12 @@ def main() -> None:
     evaluate.add_argument("--config", type=Path, required=True)
     evaluate.add_argument("--responses", type=Path)
     evaluate.add_argument("--output", type=Path)
+    infer = commands.add_parser("blind-infer", help="Preview or call a provider on frozen synthetic tasks.")
+    infer.add_argument("--provider-config", type=Path, required=True)
+    infer.add_argument("--output", type=Path, required=True, help="Request manifest and per-task checkpoint.")
+    infer.add_argument("--responses", type=Path, help="Live-run response envelope for blind-eval.")
+    infer.add_argument("--dry-run", action="store_true", help="Save requests without reading an API key or calling a provider.")
+    infer.add_argument("--resume", action="store_true", help="Continue only tasks not yet started in this checkpoint.")
     corpus = commands.add_parser("corpus", help="Summarize the local reference corpus.")
     corpus.add_argument("--dataset", type=Path, required=True)
     validate = commands.add_parser("validate-corpus", help="Validate a local corpus.")
@@ -56,6 +62,16 @@ def main() -> None:
             if args.responses and not isinstance(submission, dict):
                 raise ValueError("The response file must contain a JSON response envelope object.")
             result = run_blind_evaluation(json.loads(args.config.read_text(encoding="utf-8")), submission)
+        elif args.command == "blind-infer":
+            from .inference import run_inference
+            from .llm.provider import strict_json
+            if any(path is not None and path.resolve() == args.provider_config.resolve()
+                   for path in (args.output, args.responses)):
+                raise ValueError("Provider config and output files must use different paths.")
+            result = run_inference(
+                strict_json(args.provider_config.read_text(encoding="utf-8")),
+                output=args.output, responses=args.responses, dry_run=args.dry_run, resume=args.resume,
+            )
         elif args.command == "corpus":
             records = list(iter_papers(args.dataset))
             result = {
