@@ -1,0 +1,46 @@
+# Local environments, credentials and machine-specific paths
+.venv/
+.venvs/
+.env
+.env.*
+!.env.example
+configs/local.paths.json
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+.coverage
+.DS_Store
+
+# Generated literature content stays local until publication rights are resolved.
+datasets/literature/txt/
+datasets/literature/abstracts/
+datasets/literature/json/
+datasets/literature/sources/
+datasets/literature/papers.jsonl
+datasets/literature/reports/
+datasets/literature/dataset_info.json
+
+# Patient records, PDFs, model files, logs, and bulk archives are external assets.
+datasets/private/
+data/private/
+external/
+models/
+literature_downloads/
+literature_ocr/
+*.pdf
+*.zip
+*.parquet
+*.feather
+*.sqlite*
+*.db
+*.safetensors*
+*.pt
+*.pth
+*.bin
+*.log
+.build-*/
+outputs/*
+!outputs/README.md

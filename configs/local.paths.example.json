@@ -1,0 +1,7 @@
+{
+  "source_workspace": "/path/to/original-literature-assets",
+  "literature_dataset": "datasets/literature",
+  "outputs": "outputs",
+  "mimic_data": null,
+  "ocr_model": "/path/to/Unlimited-OCR-2"
+}

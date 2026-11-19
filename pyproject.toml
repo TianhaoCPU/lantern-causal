@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lantern-causal"
+version = "0.1.0"
+description = "LLM-guided latent mechanism auditing with causal inflation and target recoverability"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+dependencies = []
+keywords = ["causal-inference", "missing-data", "latent-variables", "inflation", "mimic"]
+
+[project.scripts]
+lantern = "lantern_causal.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"lantern_causal.llm" = ["*.md"]

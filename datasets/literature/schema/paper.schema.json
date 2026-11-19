@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MIMIC literature record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "pmid",
+    "source_document_id",
+    "source_number",
+    "title",
+    "publication_year",
+    "journal",
+    "authors_display",
+    "doi",
+    "pmcid",
+    "pubmed_url",
+    "abstract",
+    "full_text_available",
+    "content_type",
+    "text",
+    "text_sha256",
+    "page_count",
+    "pages",
+    "headings",
+    "tables",
+    "files",
+    "quality",
+    "provenance",
+    "screening",
+    "replication_registry",
+    "annotation_status"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "pmid": {
+      "type": "string",
+      "pattern": "^[0-9]+$"
+    },
+    "source_document_id": {
+      "type": "string"
+    },
+    "source_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "title": {
+      "type": "string"
+    },
+    "publication_year": {
+      "type": "integer"
+    },
+    "journal": {
+      "type": "string"
+    },
+    "authors_display": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "doi": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pmcid": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "pubmed_url": {
+      "type": "string"
+    },
+    "abstract": {
+      "type": "string",
+      "minLength": 1
+    },
+    "full_text_available": {
+      "type": "boolean"
+    },
+    "content_type": {
+      "enum": [
+        "ocr_full_text",
+        "abstract_only"
+      ]
+    },
+    "text": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "text_sha256": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "page_count": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1
+    },
+    "pages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "page_number",
+          "char_start",
+          "char_end",
+          "warnings"
+        ],
+        "properties": {
+          "page_number": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "char_start": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "char_end": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    },
+    "headings": {
+      "type": "array"
+    },
+    "tables": {
+      "type": "array"
+    },
+    "files": {
+      "type": "object",
+      "required": [
+        "txt",
+        "json",
+        "abstract_txt"
+      ]
+    },
+    "quality": {
+      "type": "object"
+    },
+    "provenance": {
+      "type": "object"
+    },
+    "screening": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "replication_registry": {
+      "type": "object"
+    },
+    "annotation_status": {
+      "const": "not_causal_ground_truth"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "full_text_available": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "content_type": {
+            "const": "ocr_full_text"
+          },
+          "text": {
+            "type": "string",
+            "minLength": 1
+          },
+          "text_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "page_count": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "content_type": {
+            "const": "abstract_only"
+          },
+          "text": {
+            "type": "null"
+          },
+          "text_sha256": {
+            "type": "null"
+          },
+          "page_count": {
+            "type": "null"
+          },
+          "pages": {
+            "maxItems": 0
+          },
+          "headings": {
+            "maxItems": 0
+          },
+          "tables": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ]
+}

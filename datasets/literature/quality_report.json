@@ -1,0 +1,804 @@
+{
+  "records": 154,
+  "full_text_records": 138,
+  "abstract_only_records": 16,
+  "abstract_records": 154,
+  "ocr_pages": 1802,
+  "ocr_table_blocks": 665,
+  "abstract_screened_records": 83,
+  "screened_with_full_text": 75,
+  "warning_documents": 22,
+  "warning_pages": 35,
+  "warning_code_counts": {
+    "low_word_overlap_with_native_pdf_text": 35
+  },
+  "unresolved_ocr_errors": 0,
+  "empty_text_pages": 0,
+  "removed_standalone_merge_markers": 668,
+  "duplicate_full_text_hash_groups": [],
+  "missing_full_text": [
+    {
+      "pmid": "37480658",
+      "title": "Elastic power, a novel predictor of the severity and prognosis of ARDS.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "36413433",
+      "title": "Novel predictors and a predictive model of cerebrovascular atherosclerotic ischemic stroke based on clinical databases.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "39128399",
+      "title": "Development and validation of a Multi-Causal investigation and discovery framework for knowledge harmonization (MINDMerge): A case study with acute kidney injury risk factor discovery using electronic medical records.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "37852108",
+      "title": "An interpretable ensemble learning model facilitates early risk stratification of ischemic stroke in intensive care unit: Development and external validation of ICU-ISPM.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "41411770",
+      "title": "Association of the Lactate-to-Albumin Ratio With All-Cause Mortality in Trauma and Surgical Intensive Care Patients: A Retrospective Study.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "40399736",
+      "title": "Serum creatinine-to-albumin ratio predicts mortality in hemorrhagic stroke: a novel threshold for risk stratification.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "40587360",
+      "title": "MDP-GRL: Multi-disease Prediction by Graph-enabled Representation Learning.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "34875570",
+      "title": "Developing and verifying a multivariate model to predict the survival probability after coronary artery bypass grafting in patients with coronary atherosclerosis based on the MIMIC-III database.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "37088074",
+      "title": "Red Cell Distribution Width-to-Platelet Count Ratio: A Promising Predictor of In-Hospital All-Cause Mortality in Critically Ill Patients with Acute Ischemic Stroke.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "42333851",
+      "title": "Risk Factor Analysis and Nomogram for Predicting 28-day in-hospital Mortality in ICU Patients with Liver Necrosis.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "41879485",
+      "title": "Stress hyperglycemia ratio emerges as a novel independent predictor of acute kidney injury among critically ill patients with acute heart failure: A retrospective analysis of the MIMIC-IV database.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "39236563",
+      "title": "Prediction of mortality events of patients with acute heart failure in intensive care unit based on deep neural network.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "41512748",
+      "title": "Red cell distribution width and in-hospital mortality in intensive care unit patients with non-traumatic subarachnoid hemorrhage: A cohort study.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "32773672",
+      "title": "A statistically rigorous deep neural network approach to predict mortality in trauma patients admitted to the intensive care unit.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "42008965",
+      "title": "Preoperative frailty for predicting in-hospital mortality in patients after cardiac surgery: an interpretable Machine learning model based on a retrospective multicenter cohort study.",
+      "download_status": "subscription_or_author_copy_needed"
+    },
+    {
+      "pmid": "42570669",
+      "title": "Increased Blood Urea Nitrogen-To-Creatinine Ratio is an Independent Predictor of Mortality in Patients with End-Stage Renal Disease.",
+      "download_status": "subscription_or_author_copy_needed"
+    }
+  ],
+  "pages_recommended_for_review": [
+    {
+      "pmid": "35634435",
+      "page_number": 7,
+      "char_start": 24626,
+      "char_end": 27224,
+      "block_count": 13,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 873,
+        "ocr_word_count": 479,
+        "native_word_recall": 0.5258,
+        "ocr_word_precision_vs_native": 0.9582,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "35634435",
+      "page_number": 8,
+      "char_start": 27235,
+      "char_end": 27660,
+      "block_count": 8,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 304,
+        "ocr_word_count": 63,
+        "native_word_recall": 0.1941,
+        "ocr_word_precision_vs_native": 0.9365,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "41239205",
+      "page_number": 15,
+      "char_start": 43698,
+      "char_end": 50865,
+      "block_count": 50,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 1530,
+        "ocr_word_count": 1125,
+        "native_word_recall": 0.6281,
+        "ocr_word_precision_vs_native": 0.8542,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "41239205",
+      "page_number": 16,
+      "char_start": 50877,
+      "char_end": 58540,
+      "block_count": 36,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 1934,
+        "ocr_word_count": 1296,
+        "native_word_recall": 0.5517,
+        "ocr_word_precision_vs_native": 0.8233,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "41286668",
+      "page_number": 9,
+      "char_start": 31695,
+      "char_end": 39298,
+      "block_count": 52,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 1882,
+        "ocr_word_count": 1267,
+        "native_word_recall": 0.5574,
+        "ocr_word_precision_vs_native": 0.8279,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "42182711",
+      "page_number": 7,
+      "char_start": 23495,
+      "char_end": 25022,
+      "block_count": 12,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 422,
+        "ocr_word_count": 249,
+        "native_word_recall": 0.5877,
+        "ocr_word_precision_vs_native": 0.996,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "35685488",
+      "page_number": 5,
+      "char_start": 20003,
+      "char_end": 21292,
+      "block_count": 9,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 404,
+        "ocr_word_count": 255,
+        "native_word_recall": 0.6163,
+        "ocr_word_precision_vs_native": 0.9765,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "35685488",
+      "page_number": 7,
+      "char_start": 24209,
+      "char_end": 25361,
+      "block_count": 14,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 393,
+        "ocr_word_count": 164,
+        "native_word_recall": 0.402,
+        "ocr_word_precision_vs_native": 0.9634,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "41245592",
+      "page_number": 8,
+      "char_start": 30326,
+      "char_end": 35008,
+      "block_count": 9,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 993,
+        "ocr_word_count": 673,
+        "native_word_recall": 0.6334,
+        "ocr_word_precision_vs_native": 0.9346,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "40597716",
+      "page_number": 11,
+      "char_start": 46888,
+      "char_end": 56515,
+      "block_count": 45,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 2536,
+        "ocr_word_count": 1695,
+        "native_word_recall": 0.5517,
+        "ocr_word_precision_vs_native": 0.8254,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "40597716",
+      "page_number": 12,
+      "char_start": 56527,
+      "char_end": 60405,
+      "block_count": 20,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 989,
+        "ocr_word_count": 687,
+        "native_word_recall": 0.5834,
+        "ocr_word_precision_vs_native": 0.8399,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "41486130",
+      "page_number": 11,
+      "char_start": 39615,
+      "char_end": 47704,
+      "block_count": 48,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 2094,
+        "ocr_word_count": 1367,
+        "native_word_recall": 0.5177,
+        "ocr_word_precision_vs_native": 0.793,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "35345774",
+      "page_number": 7,
+      "char_start": 19112,
+      "char_end": 20255,
+      "block_count": 15,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 348,
+        "ocr_word_count": 169,
+        "native_word_recall": 0.4828,
+        "ocr_word_precision_vs_native": 0.9941,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "40813626",
+      "page_number": 16,
+      "char_start": 48692,
+      "char_end": 53891,
+      "block_count": 29,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 1418,
+        "ocr_word_count": 878,
+        "native_word_recall": 0.4929,
+        "ocr_word_precision_vs_native": 0.7961,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "41630082",
+      "page_number": 8,
+      "char_start": 32320,
+      "char_end": 34852,
+      "block_count": 27,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 1484,
+        "ocr_word_count": 437,
+        "native_word_recall": 0.2931,
+        "ocr_word_precision_vs_native": 0.9954,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "41630082",
+      "page_number": 10,
+      "char_start": 40931,
+      "char_end": 41650,
+      "block_count": 21,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 1045,
+        "ocr_word_count": 130,
+        "native_word_recall": 0.1244,
+        "ocr_word_precision_vs_native": 1.0,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "41630082",
+      "page_number": 11,
+      "char_start": 41662,
+      "char_end": 44122,
+      "block_count": 18,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 1069,
+        "ocr_word_count": 384,
+        "native_word_recall": 0.3527,
+        "ocr_word_precision_vs_native": 0.9818,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "41630082",
+      "page_number": 13,
+      "char_start": 49219,
+      "char_end": 50968,
+      "block_count": 19,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 658,
+        "ocr_word_count": 255,
+        "native_word_recall": 0.3784,
+        "ocr_word_precision_vs_native": 0.9765,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "37599814",
+      "page_number": 6,
+      "char_start": 23323,
+      "char_end": 24381,
+      "block_count": 9,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 359,
+        "ocr_word_count": 172,
+        "native_word_recall": 0.4708,
+        "ocr_word_precision_vs_native": 0.9826,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "37599814",
+      "page_number": 8,
+      "char_start": 30202,
+      "char_end": 30516,
+      "block_count": 7,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 200,
+        "ocr_word_count": 46,
+        "native_word_recall": 0.23,
+        "ocr_word_precision_vs_native": 1.0,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "40770450",
+      "page_number": 8,
+      "char_start": 25390,
+      "char_end": 27610,
+      "block_count": 11,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 587,
+        "ocr_word_count": 376,
+        "native_word_recall": 0.6354,
+        "ocr_word_precision_vs_native": 0.992,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "37780569",
+      "page_number": 6,
+      "char_start": 18395,
+      "char_end": 18477,
+      "block_count": 7,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 152,
+        "ocr_word_count": 14,
+        "native_word_recall": 0.0921,
+        "ocr_word_precision_vs_native": 1.0,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "40352361",
+      "page_number": 8,
+      "char_start": 21868,
+      "char_end": 22790,
+      "block_count": 15,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 287,
+        "ocr_word_count": 144,
+        "native_word_recall": 0.4843,
+        "ocr_word_precision_vs_native": 0.9653,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "40352361",
+      "page_number": 10,
+      "char_start": 27770,
+      "char_end": 28941,
+      "block_count": 15,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 341,
+        "ocr_word_count": 171,
+        "native_word_recall": 0.5015,
+        "ocr_word_precision_vs_native": 1.0,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "36478954",
+      "page_number": 6,
+      "char_start": 26905,
+      "char_end": 28091,
+      "block_count": 9,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 399,
+        "ocr_word_count": 201,
+        "native_word_recall": 0.4937,
+        "ocr_word_precision_vs_native": 0.9801,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "36478954",
+      "page_number": 8,
+      "char_start": 30963,
+      "char_end": 32473,
+      "block_count": 22,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 446,
+        "ocr_word_count": 229,
+        "native_word_recall": 0.4978,
+        "ocr_word_precision_vs_native": 0.9694,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "33928149",
+      "page_number": 7,
+      "char_start": 23575,
+      "char_end": 23629,
+      "block_count": 7,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 151,
+        "ocr_word_count": 7,
+        "native_word_recall": 0.0464,
+        "ocr_word_precision_vs_native": 1.0,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "33928149",
+      "page_number": 8,
+      "char_start": 23640,
+      "char_end": 23694,
+      "block_count": 7,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 151,
+        "ocr_word_count": 7,
+        "native_word_recall": 0.0464,
+        "ocr_word_precision_vs_native": 1.0,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "33928149",
+      "page_number": 9,
+      "char_start": 23705,
+      "char_end": 24464,
+      "block_count": 8,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 293,
+        "ocr_word_count": 150,
+        "native_word_recall": 0.5119,
+        "ocr_word_precision_vs_native": 1.0,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "41772618",
+      "page_number": 10,
+      "char_start": 39341,
+      "char_end": 42556,
+      "block_count": 21,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 855,
+        "ocr_word_count": 552,
+        "native_word_recall": 0.5064,
+        "ocr_word_precision_vs_native": 0.7844,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "40692980",
+      "page_number": 6,
+      "char_start": 21783,
+      "char_end": 22427,
+      "block_count": 9,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 193,
+        "ocr_word_count": 110,
+        "native_word_recall": 0.5596,
+        "ocr_word_precision_vs_native": 0.9818,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "40692980",
+      "page_number": 7,
+      "char_start": 22438,
+      "char_end": 24960,
+      "block_count": 8,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 577,
+        "ocr_word_count": 375,
+        "native_word_recall": 0.6049,
+        "ocr_word_precision_vs_native": 0.9307,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "33294452",
+      "page_number": 6,
+      "char_start": 21515,
+      "char_end": 23089,
+      "block_count": 23,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 579,
+        "ocr_word_count": 328,
+        "native_word_recall": 0.5613,
+        "ocr_word_precision_vs_native": 0.9909,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "42045851",
+      "page_number": 12,
+      "char_start": 43544,
+      "char_end": 51053,
+      "block_count": 40,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 1929,
+        "ocr_word_count": 1304,
+        "native_word_recall": 0.5578,
+        "ocr_word_precision_vs_native": 0.8252,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    },
+    {
+      "pmid": "41305720",
+      "page_number": 4,
+      "char_start": 18843,
+      "char_end": 22293,
+      "block_count": 10,
+      "status": "ok",
+      "warnings": [
+        "low_word_overlap_with_native_pdf_text"
+      ],
+      "quality_diagnostics": {
+        "native_pdf_word_count": 1433,
+        "ocr_word_count": 679,
+        "native_word_recall": 0.4682,
+        "ocr_word_precision_vs_native": 0.9882,
+        "note": "PDF text is a diagnostic reference, not OCR ground truth; it is never substituted for OCR."
+      },
+      "generation_finish_reason": "stop",
+      "rotation_degrees_ccw": 0
+    }
+  ],
+  "note": "OCR word overlap is diagnostic, not manually measured accuracy."
+}

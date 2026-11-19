@@ -1,0 +1,101 @@
+{
+  "project": "LANTERN-Causal",
+  "strategy": "Original workspace remains intact; project contains working copies and external asset configuration.",
+  "items": [
+    {
+      "source": ".ocr_resources.json",
+      "kind": "file",
+      "handling": "external_original_asset"
+    },
+    {
+      "source": ".venvs",
+      "kind": "directory",
+      "handling": "external_original_asset"
+    },
+    {
+      "source": "MIMIC_case_复现登记表.csv",
+      "kind": "file",
+      "handling": "copied_or_referenced_in_project"
+    },
+    {
+      "source": "MIMIC隐变量发现与目标可恢复性_论文主框架.md",
+      "kind": "file",
+      "handling": "copied_or_referenced_in_project"
+    },
+    {
+      "source": "Unlimited-OCR-2",
+      "kind": "directory",
+      "handling": "external_original_asset"
+    },
+    {
+      "source": "__pycache__",
+      "kind": "directory",
+      "handling": "external_original_asset"
+    },
+    {
+      "source": "backup",
+      "kind": "directory",
+      "handling": "copied_relevant_sources_and_modules"
+    },
+    {
+      "source": "causal_inflation_hidden_variable_demo.py",
+      "kind": "file",
+      "handling": "copied_or_referenced_in_project"
+    },
+    {
+      "source": "literature_downloads",
+      "kind": "directory",
+      "handling": "external_original_asset"
+    },
+    {
+      "source": "literature_downloads.zip",
+      "kind": "file",
+      "handling": "external_original_asset"
+    },
+    {
+      "source": "literature_ocr",
+      "kind": "directory",
+      "handling": "external_original_asset"
+    },
+    {
+      "source": "mimic_new_risk_factors_summary.csv",
+      "kind": "file",
+      "handling": "copied_or_referenced_in_project"
+    },
+    {
+      "source": "mimic_papers_dataset",
+      "kind": "directory",
+      "handling": "copied_relevant_sources_and_modules"
+    },
+    {
+      "source": "mimic_papers_dataset.zip",
+      "kind": "file",
+      "handling": "external_original_asset"
+    },
+    {
+      "source": "model_backups",
+      "kind": "directory",
+      "handling": "external_original_asset"
+    },
+    {
+      "source": "ocr_pipeline",
+      "kind": "directory",
+      "handling": "copied_relevant_sources_and_modules"
+    },
+    {
+      "source": "public_database_risk_factor_reports",
+      "kind": "directory",
+      "handling": "external_original_asset"
+    },
+    {
+      "source": "pubmed_mimic_risk_factors.py",
+      "kind": "file",
+      "handling": "copied_to_tools"
+    },
+    {
+      "source": "pubmed_public_database_risk_factors.py",
+      "kind": "file",
+      "handling": "copied_to_tools"
+    }
+  ]
+}
