@@ -55,6 +55,17 @@ class ReferenceCaseTests(unittest.TestCase):
         self.assertFalse(certificate.incompatible)
         self.assertEqual(certificate.as_dict()["status"], "not_excluded")
 
+    def test_exclusion_does_not_change_target_when_both_candidates_share_recovery_rule(self):
+        bridge = run_example({"schema_version": 1, "scenario": "bridge"})
+        control = run_example({"schema_version": 1, "scenario": "bridge_unchanged"})
+        self.assertEqual(control["observable_distribution"], bridge["observable_distribution"])
+        self.assertEqual(control["triangle_certificate"], bridge["triangle_certificate"])
+        self.assertEqual(control["triangle_certificate"]["status"], "incompatible")
+        self.assertEqual(control["before_inflation_outer_bounds"], control["after_inflation_outer_bounds"])
+        self.assertEqual(control["before_inflation_outer_bounds"], [control["complete_case_rd"]] * 2)
+        self.assertEqual(control["reference_rd"]["percentage_points"], 90.0)
+        self.assertNotEqual(bridge["before_inflation_outer_bounds"], bridge["after_inflation_outer_bounds"])
+
     def test_observation_gate_prevents_hidden_value_leakage(self):
         with self.assertRaises(ValueError):
             validate_observed({(1, 0, 0, 0): F(1)})

@@ -22,3 +22,5 @@ jobs:
       - run: python -m unittest discover -s tests -v
       - run: lantern demo --config configs/experiments/proxy.json --output outputs/proxy.json
       - run: lantern demo --config configs/experiments/bridge.json --output outputs/bridge.json
+      - run: lantern demo --config configs/experiments/bridge_unchanged.json --output outputs/bridge_unchanged.json
+      - run: lantern pilot --config configs/experiments/missingness_pilot.json --output outputs/missingness_pilot.json > /dev/null

@@ -23,7 +23,9 @@ def run_example(config: dict) -> dict:
     name = config["scenario"]
     error = Fraction(str(config.get("flip_error", "1/20")))
     exposure_error = Fraction(str(config.get("exposure_error", "1/5")))
-    case = make_case(name, error, exposure_error)
+    # The control deliberately reuses the bridge observation and certificate;
+    # its candidate family has an additional shared recording restriction.
+    case = make_case("bridge" if name == "bridge_unchanged" else name, error, exposure_error)
     certificate = cut_triangle_certificate(case.observed)
     reference = risk_difference(marginal_xy(case.full))
     visible = risk_difference(visible_xy(case.observed))
@@ -53,7 +55,7 @@ def run_example(config: dict) -> dict:
             "extra_information": "Known symmetric proxy error, independent proxy errors, and recording conditional independence.",
             "recovered_full_xy_equals_reference": recovered == marginal_xy(case.full),
         })
-    else:
+    elif name == "bridge":
         lower, upper = unrestricted_bounds(case.observed)
         result.update({
             "before_inflation_outer_bounds": [rd_value(lower), rd_value(upper)],
@@ -63,6 +65,17 @@ def run_example(config: dict) -> dict:
             ],
             "extra_information": None,
             "scope": "Only the prespecified common-upstream and independent-pair triangle candidates; exact data.",
+            "remaining_graph_assumption": "R independent of Y conditional on X, plus observed support.",
+        })
+    else:
+        # Both candidates in this control assert the same R ⟂ Y | X and
+        # support. Thus a certificate may exclude the triangle without
+        # changing the pre-existing target outer envelope.
+        result.update({
+            "before_inflation_outer_bounds": [rd_value(visible), rd_value(visible)],
+            "after_inflation_outer_bounds": [rd_value(visible), rd_value(visible)],
+            "extra_information": "Both candidates are additionally restricted by R independent of Y given X, with observed support.",
+            "scope": "Same exact bridge observations; two prespecified candidates sharing the recording restriction.",
             "remaining_graph_assumption": "R independent of Y conditional on X, plus observed support.",
         })
     return result

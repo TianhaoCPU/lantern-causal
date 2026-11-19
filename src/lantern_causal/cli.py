@@ -18,6 +18,9 @@ def main() -> None:
     demo = commands.add_parser("demo", help="Run an exact synthetic reference case.")
     demo.add_argument("--config", type=Path, required=True)
     demo.add_argument("--output", type=Path)
+    pilot = commands.add_parser("pilot", help="Run the synthetic A/B/C missingness pilot.")
+    pilot.add_argument("--config", type=Path, required=True)
+    pilot.add_argument("--output", type=Path)
     corpus = commands.add_parser("corpus", help="Summarize the local reference corpus.")
     corpus.add_argument("--dataset", type=Path, required=True)
     validate = commands.add_parser("validate-corpus", help="Validate a local corpus.")
@@ -28,6 +31,9 @@ def main() -> None:
     try:
         if args.command == "demo":
             result = run_example(json.loads(args.config.read_text(encoding="utf-8")))
+        elif args.command == "pilot":
+            from .pilot import run_pilot
+            result = run_pilot(json.loads(args.config.read_text(encoding="utf-8")))
         elif args.command == "corpus":
             records = list(iter_papers(args.dataset))
             result = {
@@ -44,7 +50,7 @@ def main() -> None:
                 args.report.parent.mkdir(parents=True, exist_ok=True)
                 args.report.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         serialized = json.dumps(result, ensure_ascii=False, indent=2, allow_nan=False)
-        if args.command == "demo" and args.output:
+        if args.command in ("demo", "pilot") and args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(serialized + "\n", encoding="utf-8")
         print(serialized)

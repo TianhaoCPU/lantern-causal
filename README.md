@@ -15,6 +15,8 @@ The name describes the research goal, not a claim that an LLM or finite-order in
 | Candidate-contract validation | Implemented. Checks candidate count, literal evidence quotes, directed acyclicity, and node references. |
 | Calibrated-proxy recovery example | Implemented and covered by exact synthetic tests. |
 | Same-observation target-range bridge example | Implemented and tested. The bridge assumes an explicit common-upstream candidate graph and compares it with an independent-pair-source triangle. |
+| Target-range unchanged control | Implemented with the bridge observation and certificate, adding a shared recording assumption to both candidates. |
+| Stratified A/B/C missingness pilot | Implemented for a fixed synthetic cohort. It computes exact finite-cohort bounds, the MAR and exposure-conditional estimators, support failures, and witness allocations. |
 | Target-endpoint ordering helper | Implemented as a transparent deterministic ordering utility. Optimality and statistical guarantees are not claimed. |
 | General inflation/LP solver | Not implemented. |
 | LLM provider integration and blinded evaluation | Not implemented. |
@@ -50,6 +52,22 @@ lantern demo --config configs/experiments/bridge.json --output outputs/bridge.js
 
 The proxy run reports a risk difference of **0.54 probability units**, or **54 percentage points**, and separately marks that calibrated proxy assumptions were supplied. The bridge run uses exact synthetic probabilities and reports the original observation-gate envelope and the candidate-graph conclusion after its inflation certificate. Both runs use no patient data and make no LLM API calls.
 
+Run the control in which excluding the triangle does not change the target range:
+
+~~~bash
+lantern demo --config configs/experiments/bridge_unchanged.json --output outputs/bridge_unchanged.json
+~~~
+
+This control uses the identical observations and exclusion certificate as the bridge, but prespecifies $R\perp Y\mid X$ and visible support for **both** candidate families. Both therefore share the same point outer bound before the test; the additional assumption is part of the control and is not inferred from the observations.
+
+Run the synthetic A/B/C missingness pilot:
+
+~~~bash
+lantern pilot --config configs/experiments/missingness_pilot.json --output outputs/missingness_pilot.json
+~~~
+
+The pilot starts from a versioned artificial cohort of 1,000 complete rows and generates 20 paired masks for each of three mechanisms. Scenario A assumes $R\perp X\mid Y,C$ and uses the MAR reconstruction; scenario B assumes $R\perp Y\mid X,C$ and uses the visible-case risk; scenario C reports the observation-gate identification interval and two allocation witnesses instead of claiming a point estimate. The report contains an exact synthetic reference risk difference of **0.0975**, or **9.75 percentage points**, actual masking rates, support failures, and paired absolute-error summaries. Its scores are kept in the output for regression checking and must not be supplied to a blinded model prompt.
+
 Use the corpus locally:
 
 ~~~bash
@@ -64,8 +82,9 @@ src/lantern_causal/
 ├── datasets/       # PMID corpus reader, builder, and validator
 ├── inflation/      # Special-case observable triangle certificate
 ├── llm/            # Candidate proposal contract and prompt; no provider call
-├── recovery/       # Risk-difference and proxy-based recovery utilities
-├── experiments.py  # Reproducible JSON experiment runner
+├── recovery/       # Risk-difference, proxy and stratified recovery utilities
+├── experiments.py  # Exact proxy and bridge JSON experiment runner
+├── pilot.py        # Synthetic A/B/C missingness generator and scorer
 ├── planning.py     # Target-endpoint candidate ordering
 └── synthetic.py    # Exact synthetic data-generating mechanisms
 configs/experiments # Versioned reference-case settings
@@ -75,13 +94,15 @@ tools/               # Corpus rebuild, PubMed search and optional OCR utilities
 tests/               # Numerical and interface regression checks
 ~~~
 
-The paper framework is in [docs/paper_framework.md](docs/paper_framework.md). Detailed inherited protocols are preserved in [docs/protocols](docs/protocols/); older planning material is in [docs/archive](docs/archive/).
+The paper framework is in [docs/paper_framework.md](docs/paper_framework.md). The executable pilot is specified in [docs/protocols/synthetic_missingness_pilot.md](docs/protocols/synthetic_missingness_pilot.md), while the planned MIMIC study is specified in [docs/protocols/missingness_recoverability.md](docs/protocols/missingness_recoverability.md). Older planning material is in [docs/archive](docs/archive/).
 
 ## Method boundary
 
 The implemented cut-inflation test evaluates a necessary condition for **one binary causal structure**: three observed variables with pairwise independent latent sources, under the stated ancestry assumptions and without direct arrows. It can return an incompatibility certificate for that candidate. It does not search arbitrary clinical DAGs, prove compatibility when the constraint passes, or uniquely label a clinical cause.
 
 Recoverability is evaluated for a specified outcome and target. The calibrated-proxy routine additionally requires a known nonsingular proxy measurement matrix, proxy-error independence, recording independence conditional on the hidden state and outcome, and cell support. Without those assumptions, the code does not return its recovered point estimate. The risk-difference endpoint-ordering helper is a starting point for experiments; it is not an optimal active-testing policy or an inferential guarantee.
+
+The A/B/C pilot is a finite-cohort identification check. Its bounds use the extremal allowed missing-$X$ allocations within each $Y,C$ cell; they are not confidence intervals. The known-graph baseline applies a named conditional-independence formula supplied by the experiment design. The pilot does not infer a missingness graph, call an LLM, access MIMIC, or establish that a clinical association is causal.
 
 ## Literature corpus and GitHub publication
 
